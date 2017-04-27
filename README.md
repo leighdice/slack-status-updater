@@ -10,7 +10,7 @@ Works especially well at a cron job.
 
 `bundle install`
 
-Replace first line in `token` file with your slack API token
+Add a `token` file in the base of the repo with your slack API token
 
 
 ### Run
