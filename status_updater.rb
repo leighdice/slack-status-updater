@@ -72,13 +72,15 @@ class SlackStatusUpdater
   base_uri 'slack.com/api/users.profile.set'
 
   def update_status(status)
-    token = File.read('token')
+    token = File.read(File.join(File.dirname(__FILE__), 'token'))
     url = "?token=#{token}&profile=#{status}"
     self.class.post(url)
   end
 end
 
 status = Status.new
+puts "Updating slack status with: #{status.current}"
+
 status_poster = SlackStatusUpdater.new
 result = status_poster.update_status(status.current_encoded)
 puts result.parsed_response if result.code != 200
